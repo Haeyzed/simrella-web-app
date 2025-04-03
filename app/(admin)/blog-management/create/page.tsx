@@ -5,7 +5,7 @@ import { BlogForm } from "@/components/blog/blog-form"
 import { useRouter } from "next/navigation"
 import React, { useEffect } from "react"
 import {Button} from "@/components/ui/button";
-import {ChevronLeft, Plus} from "lucide-react";
+import {ChevronLeft} from "lucide-react";
 
 export default function CreateBlogPage() {
     const router = useRouter()

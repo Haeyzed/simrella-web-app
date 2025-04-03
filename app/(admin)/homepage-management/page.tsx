@@ -27,6 +27,7 @@ export default function HomePageManagement() {
     const [serviceSections, setServiceSections] = useState<ServiceSection[]>([])
     const [aboutSection, setAboutSection] = useState<AboutSection | null>(null)
     const [productSections, setProductSections] = useState<ProductSection[]>([])
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [clientLogos, setClientLogos] = useState<ClientSection[]>([])
 
     // Fetch data based on active tab
