@@ -1,23 +1,20 @@
 'use client'
 
 import { getSession } from "next-auth/react"
+// import { NextFetchRequestConfig } from 'next/server'
 
 const BASE_URL = "https://simbrella-api.laravel.cloud/api"
+
+// Define a type for request body
+type RequestBody = Record<string, unknown> | FormData | null
 
 type RequestOptions = {
   method?: string
   headers?: Record<string, string>
-  body?: any
+  body?: RequestBody
   cache?: RequestCache
   next?: NextFetchRequestConfig
   auth?: boolean
-}
-
-type ApiResponse<T> = {
-  meta: Meta;
-  success: boolean
-  message: string
-  data: T
 }
 
 type Meta = {
@@ -25,6 +22,13 @@ type Meta = {
   last_page: number
   per_page: number
   total: number
+}
+
+export type ApiResponse<T> = {
+  meta: Meta;
+  success: boolean
+  message: string
+  data: T
 }
 
 class HttpClient {
@@ -93,15 +97,15 @@ class HttpClient {
     return this.request<T>(endpoint, { ...options, method: "GET" })
   }
 
-  async post<T>(endpoint: string, body: any, options: Omit<RequestOptions, "method"> = {}): Promise<ApiResponse<T>> {
+  async post<T>(endpoint: string, body: RequestBody, options: Omit<RequestOptions, "method"> = {}): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, { ...options, method: "POST", body })
   }
 
-  async put<T>(endpoint: string, body: any, options: Omit<RequestOptions, "method"> = {}): Promise<ApiResponse<T>> {
+  async put<T>(endpoint: string, body: RequestBody, options: Omit<RequestOptions, "method"> = {}): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, { ...options, method: "PUT", body })
   }
 
-  async patch<T>(endpoint: string, body: any, options: Omit<RequestOptions, "method"> = {}): Promise<ApiResponse<T>> {
+  async patch<T>(endpoint: string, body: RequestBody, options: Omit<RequestOptions, "method"> = {}): Promise<ApiResponse<T>> {
     return this.request<T>(endpoint, { ...options, method: "PATCH", body })
   }
 
@@ -111,4 +115,3 @@ class HttpClient {
 }
 
 export const httpClient = HttpClient.getInstance()
-

@@ -1,22 +1,18 @@
 import { auth } from "@/auth"
+// import type { NextFetchRequestConfig } from "next/server"
 
 const BASE_URL = "https://simbrella-api.laravel.cloud/api"
+
+// Define a type for request body
+type RequestBody = Record<string, unknown> | FormData | null
 
 type RequestOptions = {
     method?: string
     headers?: Record<string, string>
-    body?: any
+    body?: RequestBody
     cache?: RequestCache
     next?: NextFetchRequestConfig
     auth?: boolean
-}
-
-type ApiResponse<T> = {
-    meta: Meta;
-    success: boolean
-    message: string
-    data: T
-    errors?: Record<string, string[]>
 }
 
 type Meta = {
@@ -26,12 +22,15 @@ type Meta = {
     total: number
 }
 
-export async function serverRequest<T>(endpoint: string, options: RequestOptions = {}): Promise<{
+export type ApiResponseData<T> = {
     data: T
     meta?: Meta
     success: boolean
     message: string
-}> {
+    errors?: Record<string, string[]>
+}
+
+export async function serverRequest<T>(endpoint: string, options: RequestOptions = {}): Promise<ApiResponseData<T>> {
     const { method = "GET", headers = {}, body, cache, next, auth: requireAuth = true } = options
 
     const requestHeaders: Record<string, string> = {
@@ -91,15 +90,16 @@ export const serverHttpClient = {
     get: <T>(endpoint: string, options: Omit<RequestOptions, "method" | "body"> = {}) =>
         serverRequest<T>(endpoint, { ...options, method: "GET" }),
 
-    post: <T>(endpoint: string, body: any, options: Omit<RequestOptions, "method"> = {}) =>
-        serverRequest<T>(endpoint, { ...options, method: "POST", body }),
+        post: <T>(endpoint: string, body: RequestBody, options: Omit<RequestOptions, "method"> = {}) =>
+    serverRequest<T>(endpoint, { ...options, method: "POST", body }),
 
-    put: <T>(endpoint: string, body: any, options: Omit<RequestOptions, "method"> = {}) =>
-        serverRequest<T>(endpoint, { ...options, method: "PUT", body }),
+    put: <T>(endpoint: string, body: RequestBody, options: Omit<RequestOptions, "method"> = {}) =>
+    serverRequest<T>(endpoint, { ...options, method: "PUT", body }),
 
-    patch: <T>(endpoint: string, body: any, options: Omit<RequestOptions, "method"> = {}) =>
-        serverRequest<T>(endpoint, { ...options, method: "PATCH", body }),
+    patch: <T>(endpoint: string, body: RequestBody, options: Omit<RequestOptions, "method"> = {}) =>
+    serverRequest<T>(endpoint, { ...options, method: "PATCH", body }),
 
     delete: <T>(endpoint: string, options: Omit<RequestOptions, "method"> = {}) =>
-        serverRequest<T>(endpoint, { ...options, method: "DELETE" })
+    serverRequest<T>(endpoint, { ...options, method: "DELETE" })
 }
+
