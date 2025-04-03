@@ -11,6 +11,7 @@ import { toast } from "sonner"
 import { createServiceSection, updateServiceSection } from "@/actions/sections"
 import type { ServiceSection } from "@/types/api"
 import { Upload } from "lucide-react"
+import Image from "next/image";
 
 interface ServiceSectionFormProps {
   service?: ServiceSection
@@ -123,7 +124,7 @@ export function ServiceSectionForm({ service, onSuccess }: ServiceSectionFormPro
         >
           {iconPreview ? (
             <div className="relative w-full">
-              <img
+              <Image
                 src={iconPreview || "/placeholder.svg"}
                 alt="Icon preview"
                 className="max-h-24 mx-auto object-contain"

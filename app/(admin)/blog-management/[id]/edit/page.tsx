@@ -8,7 +8,7 @@ import { getBlogPost } from "@/actions/blog"
 import { toast } from "sonner"
 import type { BlogPost } from "@/types/api"
 
-export default function EditBlogPage({ params }: { params: { id: string } }) {
+export default function EditBlogPage({ params }: { params: { id: number } }) {
     const router = useRouter()
     const canUpdate = useHasPermission("blog_update")
     const [blogPost, setBlogPost] = useState<BlogPost | null>(null)
@@ -18,7 +18,7 @@ export default function EditBlogPage({ params }: { params: { id: string } }) {
     useEffect(() => {
         async function fetchBlogPost() {
             try {
-                const id = Number.parseInt(params.id)
+                const id = Number.parseInt(String(params.id))
                 if (isNaN(id)) {
                     router.push("/blog-management")
                     return
