@@ -11,7 +11,7 @@ import { RiUser3Line, RiSettings4Line, RiLogoutBoxRLine } from "react-icons/ri"
 import Link from "next/link"
 
 interface UserProfileDropdownProps {
-    user: User | any
+    user: User
 }
 
 export function UserProfileDropdown({ user }: UserProfileDropdownProps) {

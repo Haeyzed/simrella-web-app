@@ -24,7 +24,6 @@ import {
     SidebarMenuItem,
     SidebarRail,
 } from "@/components/ui/sidebar"
-import { useMemo } from "react"
 
 // Define navigation items with required permissions
 const navItems = [

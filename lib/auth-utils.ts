@@ -1,6 +1,7 @@
 "use client"
 
 import { useSession } from "next-auth/react"
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { User, Permission } from "@/types/api"
 
 // Check if user has a specific permission

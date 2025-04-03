@@ -18,6 +18,7 @@ interface ClientsLogoTabProps {
 
 export function ClientsLogoTab({ clientLogos, canEdit, onUpdate }: ClientsLogoTabProps) {
   const [activeSubTab, setActiveSubTab] = useState("logos")
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [logoImage, setLogoImage] = useState<File | null>(null)
   const [logoImagePreview, setLogoImagePreview] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)

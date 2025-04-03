@@ -23,6 +23,7 @@ import {
     Headphones,
 } from "lucide-react"
 import { Editor } from "@tinymce/tinymce-react"
+import Image from "next/image";
 
 interface BlogFormProps {
     blogPost?: BlogPost
@@ -74,6 +75,7 @@ export function BlogForm({ blogPost, isEdit = false }: BlogFormProps) {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const handleDragOver = (e: React.DragEvent, type: "banner" | "related") => {
         e.preventDefault()
         e.stopPropagation()
@@ -204,7 +206,7 @@ export function BlogForm({ blogPost, isEdit = false }: BlogFormProps) {
                         >
                             {bannerImagePreview ? (
                                 <div className="relative w-full">
-                                    <img
+                                    <Image
                                         src={bannerImagePreview || "/placeholder.svg"}
                                         alt="Banner preview"
                                         className="max-h-48 mx-auto object-contain"
@@ -346,7 +348,7 @@ export function BlogForm({ blogPost, isEdit = false }: BlogFormProps) {
                                     <div className="grid grid-cols-3 gap-4 mb-4">
                                         {relatedImagesPreview.map((preview, index) => (
                                             <div key={index} className="relative">
-                                                <img
+                                                <Image
                                                     src={preview || "/placeholder.svg"}
                                                     alt={`Related image ${index + 1}`}
                                                     className="h-24 w-full object-cover rounded-md"

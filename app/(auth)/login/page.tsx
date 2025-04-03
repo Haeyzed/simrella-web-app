@@ -55,6 +55,7 @@ export default function LoginPage() {
             }
 
             // Login successful, redirect will be handled by the login action
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             setError("An unexpected error occurred. Please try again.")
             setIsPending(false)

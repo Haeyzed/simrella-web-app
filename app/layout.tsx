@@ -4,12 +4,15 @@ import "./globals.css";
 import NextAuthProvider from "@/providers/session-provider";
 import {ThemeProvider} from "@/providers/theme-provider";
 import {Toaster} from "@/components/ui/sonner";
+import React from "react";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const geistMono = Geist_Mono({
     variable: "--font-geist-mono",
     subsets: ["latin"],
