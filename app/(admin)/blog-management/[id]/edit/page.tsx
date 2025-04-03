@@ -8,7 +8,11 @@ import { getBlogPost } from "@/actions/blog"
 import { toast } from "sonner"
 import type { BlogPost } from "@/types/api"
 
-export default function EditBlogPage({ params }: { params: { id: string } }) {
+interface EditBlogPageProps {
+    params: { id: string }
+}
+
+export default function EditBlogPage({ params }: EditBlogPageProps) {
     const router = useRouter()
     const canUpdate = useHasPermission("blog_update")
     const [blogPost, setBlogPost] = useState<BlogPost | null>(null)
