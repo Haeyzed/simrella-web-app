@@ -11,6 +11,7 @@ import { toast } from "sonner"
 import { updateHeroSection } from "@/actions/sections"
 import type { HeroSection } from "@/types/api"
 import { Upload } from "lucide-react"
+import Image from "next/image";
 
 interface HeroSectionFormProps {
   heroSection?: HeroSection | null
@@ -140,7 +141,7 @@ export function HeroSectionForm({ heroSection, onSuccess }: HeroSectionFormProps
                 <div className="grid grid-cols-3 gap-4 mb-4">
                   {bannerImagesPreview.map((preview, index) => (
                     <div key={index} className="relative">
-                      <img
+                      <Image
                         src={preview || "/placeholder.svg"}
                         alt={`Carousel image ${index + 1}`}
                         className="h-24 w-full object-cover rounded-md"

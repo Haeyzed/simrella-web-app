@@ -11,6 +11,7 @@ import { toast } from "sonner"
 import { createAboutSection, updateAboutSection } from "@/actions/sections"
 import type { AboutSection } from "@/types/api"
 import { Upload } from "lucide-react"
+import Image from "next/image";
 
 interface AboutSectionFormProps {
   aboutSection?: AboutSection | null
@@ -126,7 +127,7 @@ export function AboutSectionForm({ aboutSection, onSuccess }: AboutSectionFormPr
         >
           {imagePreview ? (
             <div className="relative w-full">
-              <img
+              <Image
                 src={imagePreview || "/placeholder.svg"}
                 alt="About image preview"
                 className="max-h-48 mx-auto object-contain"

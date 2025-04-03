@@ -11,6 +11,7 @@ import { toast } from "sonner"
 import { createProductSection, updateProductSection } from "@/actions/sections"
 import type { ProductSection } from "@/types/api"
 import { Upload } from "lucide-react"
+import Image from "next/image";
 
 interface ProductSectionFormProps {
   product?: ProductSection
@@ -128,7 +129,7 @@ export function ProductSectionForm({ product, onSuccess }: ProductSectionFormPro
         >
           {imagePreview ? (
             <div className="relative w-full">
-              <img
+              <Image
                 src={imagePreview || "/placeholder.svg"}
                 alt="Product image preview"
                 className="max-h-48 mx-auto object-contain"

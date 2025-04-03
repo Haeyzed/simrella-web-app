@@ -173,7 +173,7 @@ export function ClientsLogoTab({ clientLogos, canEdit, onUpdate }: ClientsLogoTa
               >
                 {logoImagePreview ? (
                   <div className="relative w-full">
-                    <img
+                    <Image
                       src={logoImagePreview || "/placeholder.svg"}
                       alt="Logo preview"
                       className="max-h-48 mx-auto object-contain"

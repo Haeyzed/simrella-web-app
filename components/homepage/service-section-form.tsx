@@ -25,12 +25,14 @@ export function ServiceSectionForm({ service, onSuccess }: ServiceSectionFormPro
   const [icon, setIcon] = useState<File | null>(null)
   const [iconPreview, setIconPreview] = useState<string | null>(service?.icon_url || null)
   const [image, setImage] = useState<File | null>(null)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [imagePreview, setImagePreview] = useState<string | null>(service?.image_url || null)
   const [order, setOrder] = useState<number>(service?.order || 0)
   const [isActive, setIsActive] = useState(service?.status === "published")
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const iconInputRef = useRef<HTMLInputElement>(null)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const imageInputRef = useRef<HTMLInputElement>(null)
 
   const handleIconChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +49,7 @@ export function ServiceSectionForm({ service, onSuccess }: ServiceSectionFormPro
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0]
