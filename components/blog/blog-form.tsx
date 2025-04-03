@@ -23,12 +23,15 @@ import {
     Headphones,
 } from "lucide-react"
 import { Editor } from "@tinymce/tinymce-react"
-import Image from "next/image";
+import Image from "next/image"
 
 interface BlogFormProps {
     blogPost?: BlogPost
     isEdit?: boolean
 }
+
+// Define a proper type for the TinyMCE editor reference
+type TinyMCEEditorRef = import("@tinymce/tinymce-react").TinyMCEEditor
 
 export function BlogForm({ blogPost, isEdit = false }: BlogFormProps) {
     const router = useRouter()
@@ -40,7 +43,7 @@ export function BlogForm({ blogPost, isEdit = false }: BlogFormProps) {
         blogPost?.images?.map((img) => img.image_url) || [],
     )
 
-    const editorRef = useRef<any>(null)
+    const editorRef = useRef<TinyMCEEditorRef | null>(null)
 
     const bannerInputRef = useRef<HTMLInputElement>(null)
     const relatedImagesInputRef = useRef<HTMLInputElement>(null)
@@ -210,6 +213,8 @@ export function BlogForm({ blogPost, isEdit = false }: BlogFormProps) {
                                         src={bannerImagePreview || "/placeholder.svg"}
                                         alt="Banner preview"
                                         className="max-h-48 mx-auto object-contain"
+                                        width={400}
+                                        height={200}
                                     />
                                     <Button
                                         type="button"
@@ -352,6 +357,8 @@ export function BlogForm({ blogPost, isEdit = false }: BlogFormProps) {
                                                     src={preview || "/placeholder.svg"}
                                                     alt={`Related image ${index + 1}`}
                                                     className="h-24 w-full object-cover rounded-md"
+                                                    width={100}
+                                                    height={100}
                                                 />
                                                 <Button
                                                     type="button"
