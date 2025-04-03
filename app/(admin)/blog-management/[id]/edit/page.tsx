@@ -18,11 +18,10 @@ export default function EditBlogPage({ params }: EditBlogPageProps) {
     const [blogPost, setBlogPost] = useState<BlogPost | null>(null)
     const [isLoading, setIsLoading] = useState(true)
 
-    // Fetch blog post
     useEffect(() => {
         async function fetchBlogPost() {
             try {
-                const id = Number.parseInt(params.id)
+                const id = parseInt(params.id, 10)
                 if (isNaN(id)) {
                     router.push("/blog-management")
                     return
@@ -32,14 +31,14 @@ export default function EditBlogPage({ params }: EditBlogPageProps) {
                 if (response.success && response.data) {
                     setBlogPost(response.data)
                 } else {
-                    toast("Error", {
+                    toast.error("Error", {
                         description: "Failed to load blog post",
                     })
                     router.push("/blog-management")
                 }
             } catch (error) {
                 console.error("Error fetching blog post:", error)
-                toast("Error", {
+                toast.error("Error", {
                     description: "Failed to load blog post",
                 })
                 router.push("/blog-management")
@@ -51,7 +50,6 @@ export default function EditBlogPage({ params }: EditBlogPageProps) {
         fetchBlogPost()
     }, [params.id, router])
 
-    // Redirect if user doesn't have permission
     useEffect(() => {
         if (!canUpdate && !isLoading) {
             router.push("/blog-management")
@@ -68,4 +66,3 @@ export default function EditBlogPage({ params }: EditBlogPageProps) {
 
     return <BlogForm blogPost={blogPost} isEdit />
 }
-
