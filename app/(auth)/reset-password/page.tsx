@@ -65,6 +65,7 @@ export default function ResetPasswordPage() {
             setTimeout(() => {
                 router.push("/login")
             }, 2000)
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             setError("An unexpected error occurred. Please try again.")
             setIsPending(false)
@@ -89,7 +90,7 @@ export default function ResetPasswordPage() {
                     )}
 
                     {success && (
-                        <Alert variant="success" className="bg-green-50 text-green-800 border-green-200">
+                        <Alert variant="default" className="bg-green-50 text-green-800 border-green-200">
                             <AlertDescription>{success}</AlertDescription>
                         </Alert>
                     )}

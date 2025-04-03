@@ -17,12 +17,14 @@ import {loginSchema} from "@/lib/validations"
 import {Loader2} from "lucide-react";
 
 export default function LoginPage() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const router = useRouter()
     const searchParams = useSearchParams()
     const [error, setError] = useState<string | null>(null)
     const [isPending, setIsPending] = useState(false)
 
     // Get callbackUrl from query string
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const callbackUrl = searchParams.get("callbackUrl") || "/dashboard"
 
     const form = useForm<z.infer<typeof loginSchema>>({

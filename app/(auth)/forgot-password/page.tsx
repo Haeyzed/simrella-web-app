@@ -51,6 +51,7 @@ export default function ForgotPasswordPage() {
             setTimeout(() => {
                 router.push(`/reset-password?email=${encodeURIComponent(values.email)}`)
             }, 2000)
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             setError("An unexpected error occurred. Please try again.")
             setIsPending(false)
@@ -61,7 +62,7 @@ export default function ForgotPasswordPage() {
         <>
             <div className="mb-8">
                 <h1 className="text-3xl font-bold mb-2">Forgot Password</h1>
-                <p className="text-gray-500">Enter your email address and we'll send you a link to reset your
+                <p className="text-gray-500">Enter your email address and we&#39;ll send you a link to reset your
                     password</p>
             </div>
 
@@ -74,7 +75,7 @@ export default function ForgotPasswordPage() {
                     )}
 
                     {success && (
-                        <Alert variant="success" className="bg-green-50 text-green-800 border-green-200">
+                        <Alert variant="default" className="bg-green-50 text-green-800 border-green-200">
                             <AlertDescription>{success}</AlertDescription>
                         </Alert>
                     )}

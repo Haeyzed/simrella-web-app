@@ -75,6 +75,7 @@ export default function VerifyPage() {
             setTimeout(() => {
                 router.push("/login")
             }, 2000)
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             setError("An unexpected error occurred. Please try again.")
             setIsPending(false)
@@ -98,6 +99,7 @@ export default function VerifyPage() {
 
             setSuccess(result.message || "Verification email resent. Please check your inbox.")
             setIsResending(false)
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             setError("An unexpected error occurred. Please try again.")
             setIsResending(false)
@@ -109,7 +111,7 @@ export default function VerifyPage() {
             <div className="mb-8">
                 <h1 className="text-3xl font-bold mb-4">Verify Email Address</h1>
                 <p className="text-gray-600 leading-relaxed">
-                    Let's get you secured. A verification code has been sent to{" "}
+                    Let&#39;s get you secured. A verification code has been sent to{" "}
                     <span className="text-[#4040A1] font-medium">{email}</span> to verify it is you. Please enter code
                     below
                 </p>
@@ -122,7 +124,7 @@ export default function VerifyPage() {
             )}
 
             {success && (
-                <Alert variant="success" className="bg-green-50 text-green-800 border-green-200 mb-6">
+                <Alert variant="default" className="bg-green-50 text-green-800 border-green-200 mb-6">
                     <AlertDescription>{success}</AlertDescription>
                 </Alert>
             )}
@@ -178,7 +180,7 @@ export default function VerifyPage() {
                     <div className="flex items-center gap-2 text-gray-500">
                         <Clock className="h-5 w-5 text-[#FF9B21]"/>
                         <span>
-              Didn't receive code?{" "}
+              Didn&#39;t receive code?{" "}
                             <button
                                 type="button"
                                 onClick={handleResendVerification}
