@@ -3,7 +3,7 @@
 import { getSession } from "next-auth/react"
 // import { NextFetchRequestConfig } from 'next/server'
 
-const BASE_URL = "https://simbrella-api.laravel.cloud/api"
+const BASE_URL = "https://simbrella.softmaxtech.com.ng/public/api"
 
 // Define a type for request body
 type RequestBody = Record<string, unknown> | FormData | null

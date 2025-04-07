@@ -41,7 +41,7 @@ export const authConfig: NextAuthConfig = {
                 }
 
                 try {
-                    const response = await fetch("https://simbrella-api.laravel.cloud/api/auth/login", {
+                    const response = await fetch("https://simbrella.softmaxtech.com.ng/public/api/auth/login", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
